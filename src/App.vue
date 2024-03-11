@@ -1,10 +1,9 @@
 <script lang="ts" setup>
 import { RouterView } from 'vue-router'
-import { ref } from 'vue'
 import { getList } from '@/api/test'
+import { ref } from 'vue'
 
-const color = ref<string>('red')
-const size = ref<number>(20)
+const list = ref()
 
 const init = async () => {
   try {
@@ -13,7 +12,8 @@ const init = async () => {
       size: 10
     })
 
-    console.log('Res=>', res)
+    console.log('res=>', res.data)
+    list.value = res.data.records
   } catch (e) {
     console.log(e)
   }
@@ -22,9 +22,6 @@ init()
 </script>
 
 <template>
-  <!--  <svg-icon color="red" name="ele-Edit" size="20"></svg-icon>-->
-  <!--  <svg-icon color="blue" name="ele-Delete" size="20"></svg-icon>-->
-
   <RouterView />
 </template>
 

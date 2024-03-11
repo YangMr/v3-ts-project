@@ -10,7 +10,15 @@ export default defineConfig({
     // 设置端口号为8080
     port: 8080,
     // 启动项目时,自动打开浏览器
-    open: true
+    open: true,
+    // 跨域代理
+    proxy: {
+      '/api': {
+        target: 'http://vue3.mengxuegu.com/pro-api',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   },
   resolve: {
     alias: {
