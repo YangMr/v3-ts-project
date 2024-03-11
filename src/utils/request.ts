@@ -3,7 +3,8 @@ import axios, {
   type AxiosError,
   type AxiosInstance,
   type AxiosResponse,
-  type InternalAxiosRequestConfig
+  type InternalAxiosRequestConfig,
+  type Method
 } from 'axios'
 
 // 创建实例对象
@@ -25,11 +26,49 @@ service.interceptors.request.use(
 // 创建响应拦截器
 service.interceptors.response.use(
   (response: AxiosResponse) => {
-    return response
+    if (response.data.code === 20000) {
+      return response.data
+    }
   },
   (error: AxiosError) => {
     return Promise.reject(error)
   }
 )
 
-export default service
+interface DataType<T = any> {
+  code: number
+  message: string
+  data: T
+}
+
+const request = <T = any>(
+  url: string,
+  method: Method = 'GET',
+  submitData?: object,
+  options?: InternalAxiosRequestConfig
+) => {
+  return service.request<T, DataType<T>>({
+    url,
+    method,
+    [method.toLowerCase() === 'get' ? 'params' : 'data']: submitData,
+    ...options
+  })
+}
+
+export const get = <T = any>(url: string, data = {}) => {
+  return request<T>(url, 'GET', data)
+}
+
+export const post = <T = any>(url: string, data = {}) => {
+  return request<T>(url, 'POST', data)
+}
+
+export const put = <T = any>(url: string, data = {}) => {
+  return request<T>(url, 'POST', data)
+}
+
+export const del = <T = any>(url: string, data = {}) => {
+  return request<T>(url, 'DELETE', data)
+}
+
+export default request
