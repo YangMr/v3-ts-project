@@ -22,9 +22,12 @@ const props = withDefaults(
 
 const render = () => {
   if (props.name && props.name?.startsWith('ele-')) {
-    return h(resolveComponent('el-icon'), { color: props.color, size: props.size }, [
-      h(resolveComponent(props.name))
-    ])
+    // return h(resolveComponent('el-icon'), { color: props.color, size: props.size }, [
+    //   h(resolveComponent(props.name))
+    // ])
+    return h(resolveComponent('el-icon'), { color: props.color, size: props.size }, () => {
+      return h(resolveComponent(props.name))
+    })
   } else {
     return h('i')
   }

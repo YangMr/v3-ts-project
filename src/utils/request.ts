@@ -9,7 +9,8 @@ import type { DataType } from '@/utils/types'
 
 // axios实例对象
 const service: AxiosInstance = axios.create({
-  baseURL: '/api',
+  // baseURL: '/api',
+  baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: 20000
 })
 
@@ -35,11 +36,6 @@ service.interceptors.response.use(
     return Promise.reject(error)
   }
 )
-
-// service
-// 1. service.request 这个是怎么来的
-// 2. 泛型 预先不指定具体的类型 使用的时候在指定类型
-// T ListResponseType
 
 const request = <T = any>(
   url: string,
@@ -72,3 +68,12 @@ export const del = <T = any>(url: string, data: Object) => {
 }
 
 export default request
+
+
+// 开发环境 请求的代理 /api http://www.baidu.com
+
+// 生产环境 请求代理 /pro http://www.jd.com
+
+// 测试环境 请求代理 /test http://test.com
+
+// 预发布   请求代理 /stage http://stage.com
