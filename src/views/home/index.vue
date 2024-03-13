@@ -1,13 +1,13 @@
 <script lang="ts" name="Home" setup>
-import { ref } from 'vue'
+import { defineAsyncComponent } from 'vue'
 
-const message = ref<string>('')
+const StaticBlock = defineAsyncComponent(() => import('./components/staticBlock.vue'))
 </script>
 
 <template>
   <div>
-    <el-input v-model="message" placeholder="请输入message"></el-input>
+    <StaticBlock></StaticBlock>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

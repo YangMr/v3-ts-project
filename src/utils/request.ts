@@ -7,9 +7,10 @@ import axios, {
 } from 'axios'
 import type { DataType } from '@/utils/types'
 
+console.log('aaa', import.meta.env.VITE_APP_BASE_API)
 // axios实例对象
 const service: AxiosInstance = axios.create({
-  // baseURL: '/api',
+  // baseURL: '/dev-api',
   baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: 20000
 })

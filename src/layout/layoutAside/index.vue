@@ -1,13 +1,23 @@
 <script lang="ts" setup>
-import { defineAsyncComponent } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
+import { useLayoutConfigStore } from '@/stores/layoutConfig'
+
+const store = useLayoutConfigStore()
 
 const Logo = defineAsyncComponent(() => import('./logo.vue'))
 const VerticalMenu = defineAsyncComponent(() => import('./vertcialMenu.vue'))
+
+const isCollapse = computed(() => {
+  return store.isCollapse
+})
 </script>
 
 <template>
   <!--左侧菜单区域-->
-  <el-aside class="layout-aside-menu-200 layout-aside">
+  <el-aside
+    :class="isCollapse ? 'layout-aside-menu-60' : 'layout-aside-menu-200'"
+    class="layout-aside"
+  >
     <!--logo-->
     <Logo></Logo>
     <!--menu-->

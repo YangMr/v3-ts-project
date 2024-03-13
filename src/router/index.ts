@@ -6,6 +6,11 @@ const dynamicRoutes: RouteRecordRaw[] = [
     path: '/',
     name: 'Layout',
     component: () => import('@/layout/index.vue'),
+    redirect: '/home',
+    meta: {
+      // 如果isBreadcrumb 为 false 的话, 标识不会把根路由数据放到面包屑导航
+      isBreadcrumb: false
+    },
     children: [
       {
         path: '/home',

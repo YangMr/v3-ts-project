@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { MenuItemType } from '@/layout/layoutAside/types/verticalMenuType'
-import { defineAsyncComponent } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
+import { useLayoutConfigStore } from '@/stores/layoutConfig'
 
 const MenuItem = defineAsyncComponent(() => import('./menuItem.vue'))
 const menuList: MenuItemType[] = [
@@ -108,8 +109,8 @@ const menuList: MenuItemType[] = [
     ]
   },
   {
-    path: '/mengxuegu',
-    name: 'Mengxuegu',
+    path: '/usian',
+    name: 'Usian',
     redirect: null,
     component: 'link/index.vue',
     meta: {
@@ -120,12 +121,33 @@ const menuList: MenuItemType[] = [
       hidden: false
     },
     children: []
+  },
+  {
+    path: '/401',
+    name: '401',
+    redirect: null,
+    component: 'error/401.vue',
+    meta: {
+      title: '401',
+      icon: 'ele-Link',
+      cache: true,
+      hidden: false
+    },
+    children: []
   }
 ]
+
+const store = useLayoutConfigStore()
+console.log('store', store)
+
+const isCollapse = computed(() => {
+  return store.isCollapse
+})
 </script>
 
 <template>
   <el-menu
+    :collapse="isCollapse"
     :default-active="$route.path"
     :router="true"
     active-text-color="#ffd04b"

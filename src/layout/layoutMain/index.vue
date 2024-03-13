@@ -17,4 +17,8 @@
   </el-main>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+::v-deep(.el-scrollbar__view) {
+  height: 100%;
+}
+</style>
