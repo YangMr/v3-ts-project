@@ -138,7 +138,6 @@ const menuList: MenuItemType[] = [
 ]
 
 const store = useLayoutConfigStore()
-console.log('store', store)
 
 const isCollapse = computed(() => {
   return store.isCollapse

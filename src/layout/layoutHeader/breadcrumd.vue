@@ -28,9 +28,7 @@ const breadcrumbList = ref<RouteRecordNormalized[]>([])
 
 // 获取当前路由的面包屑数据
 const getBreadcrumb = (to: RouteLocationNormalized) => {
-  console.log('to', to)
   const matched = to.matched.filter((item: RouteRecordNormalized) => {
-    console.log('item=>', item)
     if (item.meta && item.meta.title && item.meta.isBreadcrumb !== false) {
       return item
     }
