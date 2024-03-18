@@ -8,9 +8,11 @@ export type LoginParamsType = {
 export type UserResType = {
   buttonList: string[]
   menuList: MenuItemType[]
-  userInfo: {
-    imageUrl: string
-    nickName: string
-    username: string
-  }
+  userInfo: userInfoType
+}
+
+export type userInfoType = {
+  imageUrl: string
+  nickName: string
+  username: string
 }
