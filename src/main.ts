@@ -16,6 +16,9 @@ import pinia from './stores'
 // 引入scss
 import './styles/index.scss'
 
+// 引入页面权限文件
+import './permission'
+
 const app = createApp(App)
 
 app.use(ElementPlus, {

@@ -22,6 +22,9 @@ let props = withDefaults(
 
 // 气温仪表盘配置项
 const option = {
+  title: {
+    text: props.title
+  },
   series: [
     {
       type: 'gauge',

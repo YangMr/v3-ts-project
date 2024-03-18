@@ -1,7 +1,12 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 
-// 静态路由
+// 动态路由
 const dynamicRoutes: RouteRecordRaw[] = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/auth/login.vue')
+  },
   {
     path: '/',
     name: 'Layout',
