@@ -9,8 +9,8 @@ let props = withDefaults(
     bgColor?: string
     width?: string
     height?: string
-    data: any[]
-    xAxisData: any[]
+    data: number
+    xAxisData?: any[]
   }>(),
   {
     width: '100%',

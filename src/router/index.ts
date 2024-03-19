@@ -45,6 +45,10 @@ const staticRoutes: RouteRecordRaw[] = [
     path: '/login',
     name: 'Login',
     component: () => import('@/views/auth/login.vue')
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import('@/views/error/404.vue')
   }
 ]
 

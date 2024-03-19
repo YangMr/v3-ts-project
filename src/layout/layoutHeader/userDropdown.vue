@@ -3,6 +3,9 @@ import { ref } from 'vue'
 // 引入全屏和主题切换组件方法
 import { useDark, useFullscreen } from '@vueuse/core'
 import { useLayoutConfigStore } from '@/stores/layoutConfig'
+import { useAuthStore } from '@/stores/auth'
+
+const authStore = useAuthStore()
 
 const store = useLayoutConfigStore()
 
@@ -58,7 +61,7 @@ const changeDark = (value: boolean) => {
           <el-dropdown-item @click="$router.push('/')">首页</el-dropdown-item>
           <el-dropdown-item @click="$router.push('/404')">404</el-dropdown-item>
           <el-dropdown-item @click="$router.push('/401')">401</el-dropdown-item>
-          <el-dropdown-item divided>退出系统</el-dropdown-item>
+          <el-dropdown-item divided @click="authStore.logout()">退出系统</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>

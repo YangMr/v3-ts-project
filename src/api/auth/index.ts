@@ -17,3 +17,10 @@ export const loginApi = (data: LoginParamsType) => {
 export const userInfoApi = () => {
   return request<UserResType>('/system/menu/user', 'GET')
 }
+
+/**
+ * 退出登录
+ */
+export const logoutApi = () => {
+  return request('/auth/logout', 'POST')
+}
